@@ -21,7 +21,8 @@
             <div class="alert alert-primary">
                 The information here can be obtained from the '<a
                     href="https://dashboard.foreman.mn/dashboard/profile/">My
-                Account</a>' section in Foreman.
+                Account</a>' section in Foreman. This controls what
+                credentials are leveraged when interacting with the Foreman API.
             </div>
             <div class="form-group">
                 <label for="clientId">Client ID:</label>
@@ -58,7 +59,7 @@
             </code>
 
             <div class="form-group mt-2">
-                <label for="ipRanges">IP Range Restrictions:</label>
+                <label for="ipRanges">Allowed Ranges:</label>
                 <textarea id="ipRanges" rows="10" th:field="*{ipRanges}"
                           class="form-control"
                 ></textarea>
