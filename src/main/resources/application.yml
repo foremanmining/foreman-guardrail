@@ -1,0 +1,3 @@
+dbPath: /tmp/db.json
+server:
+  port: 25452
