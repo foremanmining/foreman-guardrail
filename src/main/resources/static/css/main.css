@@ -54,3 +54,19 @@ body .btn.save {
     width: 120px;
     margin-top: 35px;
 }
+
+body .fm-check {
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+body .alert-success {
+    border-color: #46c35f;
+    background-color: #edf9ee;
+}
+
+body .alert-danger {
+    border-color: #fa424a;
+    background-color: #feecec;
+}

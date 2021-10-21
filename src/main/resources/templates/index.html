@@ -15,6 +15,11 @@
          height="250px">
 </div>
 <div class="section">
+    <div class="alert alert-success" role="alert" th:text="${success}"
+         th:if="${success}"></div>
+    <div class="alert alert-danger" role="alert" th:text="${error}"
+         th:if="${error}"></div>
+
     <form method="post" th:action="@{/}" th:object="${pickaxeConfig}">
         <div class="card mt-4">
             <h4>Authentication</h4>
@@ -25,20 +30,28 @@
                 credentials are leveraged when interacting with the Foreman API.
             </div>
             <div class="form-group">
-                <label for="clientId">Client ID:</label>
-                <input id="clientId" placeholder="Enter Client ID" required
-                       type="number" th:field="*{clientId}"
+                <label for="clientId">Client ID: <span
+                        class="text-danger">*</span></label>
+                <input id="clientId" required type="number"
+                       th:field="*{clientId}"
                        class="form-control"/>
             </div>
             <div class="form-group">
-                <label for="apiKey">API Key:</label>
-                <input id="apiKey" placeholder="Enter API Key" required
-                       type="text" th:field="*{apiKey}"
+                <label for="apiKey">API Key: <span class="text-danger">*</span></label>
+                <input id="apiKey" required type="text" th:field="*{apiKey}"
                        class="form-control"/>
             </div>
         </div>
         <div class="card mt-4">
             <h4>Restrictions</h4>
+            <div class="form-group">
+                <label for="control">Remote Management Allowed:</label>
+                <div>
+                    <input id="control" type="checkbox" th:field="*{control}"
+                           class="form-control fm-check"/>
+                </div>
+            </div>
+
             <div class="alert alert-primary">
                 The following section allows you to
                 specify IP constraints for the Foreman monitoring agent.

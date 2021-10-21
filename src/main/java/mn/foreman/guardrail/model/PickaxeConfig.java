@@ -10,8 +10,11 @@ public class PickaxeConfig {
     public String apiKey;
 
     /** The client ID. */
-    public long clientId;
+    public Integer clientId;
+
+    /** Whether or not control is allowed. */
+    public Boolean control = true;
 
     /** The IP ranges. */
-    public String ipRanges;
+    public String ipRanges = "0-255.0-255.0-255.0-255";
 }

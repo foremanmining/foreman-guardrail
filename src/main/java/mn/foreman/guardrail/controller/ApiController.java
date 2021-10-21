@@ -52,6 +52,7 @@ public class ApiController {
                 .clientId(pickaxeConfig.clientId)
                 .apiKey(pickaxeConfig.getApiKey())
                 .ranges(ranges)
+                .control(pickaxeConfig.control)
                 .build();
     }
 
@@ -64,7 +65,10 @@ public class ApiController {
         public String apiKey;
 
         /** The client ID. */
-        public long clientId;
+        public Integer clientId;
+
+        /** The control. */
+        public Boolean control;
 
         /** The ranges. */
         public List<String> ranges;
