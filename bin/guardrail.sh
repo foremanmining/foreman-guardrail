@@ -44,7 +44,8 @@ start() {
         exec ${JAVA} \
             -jar \
             ${JVM_PARAMS} \
-            ${GUARDRAIL_HOME}/lib/guardrail*.jar &
+            ${GUARDRAIL_HOME}/lib/guardrail*.jar \
+            --dbPath=${GUARDRAIL_HOME}/../db.json &
 
         echo "started(`pgrep -f 'java -jar.*guardrail'`)"
     fi

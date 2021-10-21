@@ -1,3 +1,6 @@
 dbPath: /tmp/db.json
 server:
   port: 25452
+spring:
+  main:
+    banner-mode: off
