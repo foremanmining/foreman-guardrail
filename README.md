@@ -4,24 +4,24 @@
 
 [![Build Status](https://travis-ci.com/delawr0190/foreman-guardrail.svg?branch=main)](https://travis-ci.com/delawr0190/foreman-guardrail)
 
-## Guardrail
+## GUARDrail
 
-Guardrail is an open-source Java application that provides a mechanism to 
-set constraints on [Pickaxe](https://github.com/delawr0190/foreman-apps), 
-the Foreman miner monitoring and management agent.  This application is 
-intended to be used in a miner hosting environment where the facility would 
-like to apply local constraints, limiting the IPs that the Foreman agent can 
-reach.  This puts the operator fully in control.
+GUARDrail is an open-source Java application that provides a mechanism to set
+constraints on [Pickaxe](https://github.com/delawr0190/foreman-apps), the
+Foreman miner monitoring and management agent. This application is intended to
+be used in a miner hosting environment where the facility would like to apply
+local constraints, limiting the IPs that the Foreman agent can reach. This puts
+the operator fully in control.
 
 A typical use case for this would be:
 
-- A colocation/hosting facility has many miners hosted, each owned by different 
+- A colocation/hosting facility has many miners hosted, each owned by different
   customers
-- The facility would like to allow the customer access to their miners 
+- The facility would like to allow the customer access to their miners
   through [Foreman](https://foreman.mn)
-- The facility would like to apply local constraints rather than relying 
-  fully on [Foreman dashboard permissions](https://foreman.mn/blog/managing-access-to-cryptocurrency-miners/) to guarantee that no 
-  other miners are reachable
+- The facility would like to apply local constraints rather than relying fully
+  on [Foreman dashboard permissions](https://foreman.mn/blog/managing-access-to-cryptocurrency-miners/)
+  to guarantee that no other miners are reachable
 
 ## Requirements
 
@@ -30,37 +30,37 @@ A typical use case for this would be:
 
 ## Usage
 
-Since this application is currently only supported on Linux, it's 
-automatically installed if the `GUARDRAIL` environment variable is set to 
+Since this application is currently only supported on Linux, it's automatically
+installed if the `GUARDRAIL` environment variable is set to
 `true`. Example:
 
 ```sh
 $ curl https://tinyurl.com/service-install -Ls --output install.sh; GUARDRAIL=true sudo -E bash install.sh <client_id> <api_key>
 ```
 
-Once it's running, you can access it at the following address: 
+Once it's running, you can access it at the following address:
 `http://<computer ip>:25452`:
 
-![Guardrail](guardrail.png)
+![GUARDrail](guardrail.png)
 
 ### Setting Constraints
 
 #### Authentication
 
-The Authentication parameters specify the client ID and API key that the 
-local Pickaxe should use when interacting with Foreman.  Those can be found 
-[here](https://dashboard.foreman.mn/dashboard/profile/) (note: you must be 
-logged in).  Once they're changed, it can take up to 1 minute for Pickaxe to 
+The Authentication parameters specify the client ID and API key that the local
+Pickaxe should use when interacting with Foreman. Those can be found
+[here](https://dashboard.foreman.mn/dashboard/profile/) (note: you must be
+logged in). Once they're changed, it can take up to 1 minute for Pickaxe to
 switch to the new credentials.
 
 #### Restrictions
 
-Restrictions provide a mechanism for limiting the IPs that Pickaxe can reach 
-regardless of the constraints in place on the Foreman dashboard. As an 
-example, if a user were to dispatch a `reboot` to the IP `10.10.1.5`, but 
-that IP wasn't in the **Allowed Ranges**, then the command would fail.
+Restrictions provide a mechanism for limiting the IPs that Pickaxe can reach
+regardless of the constraints in place on the Foreman dashboard. As an example,
+if a user were to dispatch a `reboot` to the IP `10.10.1.5`, but that IP wasn't
+in the **Allowed Ranges**, then the command would fail.
 
-Either individual IPs or nmap-formatted ranges can be provided.  Example:
+Either individual IPs or nmap-formatted ranges can be provided. Example:
 
 ```
 10.0.1.2
@@ -85,7 +85,7 @@ Would allow:
 
 ## Building
 
-To build the entire foreman-guardrail repository, from the top level of the 
+To build the entire foreman-guardrail repository, from the top level of the
 repository:
 
 ```sh
@@ -104,7 +104,8 @@ Upon a successful build, you should see something similar to the following:
 [INFO] ------------------------------------------------------------------------
 ```
 
-The application distributions can be found in the `target/` folder.  You'll only need one - pick the extension you prefer.
+The application distributions can be found in the `target/` folder. You'll only
+need one - pick the extension you prefer.
 
 ```sh
 $ ls -la target | grep -E "\.(zip|tar)"
@@ -117,4 +118,5 @@ $
 
 ## License
 
-Copyright © 2021, [OBM LLC](https://obm.mn/).  Released under the [GPL-3.0 License](LICENSE).
+Copyright © 2021, [OBM LLC](https://obm.mn/). Released under
+the [GPL-3.0 License](LICENSE).
