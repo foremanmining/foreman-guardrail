@@ -2,12 +2,12 @@
 
 ## Status
 
-[![Build Status](https://travis-ci.com/delawr0190/foreman-guardrail.svg?branch=main)](https://travis-ci.com/delawr0190/foreman-guardrail)
+[![Build Status](https://travis-ci.com/foremanmining/foreman-guardrail.svg?branch=main)](https://travis-ci.com/foremanmining/foreman-guardrail)
 
 ## GUARDrail
 
 GUARDrail is an open-source Java application that provides a mechanism to set
-constraints on [Pickaxe](https://github.com/delawr0190/foreman-apps), the
+constraints on [Pickaxe](https://github.com/foremanmining/foreman-apps), the
 Foreman miner monitoring and management agent. This application is intended to
 be used in a miner hosting environment where the facility would like to apply
 local constraints, limiting the IPs that the Foreman agent can reach. This puts
