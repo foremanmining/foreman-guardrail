@@ -22,6 +22,9 @@ A typical use case for this would be:
 - The facility would like to apply local constraints rather than relying fully
   on [Foreman dashboard permissions](https://foreman.mn/blog/managing-access-to-cryptocurrency-miners/)
   to guarantee that no other miners are reachable
+- A colocation/hosting facility would like to throttle Foreman-side remote miner
+  commands to prevent power fluctuations that would typically result from a user
+  performing a large-scale reboot, pool change, etc
 
 ## Requirements
 
@@ -53,7 +56,22 @@ Pickaxe should use when interacting with Foreman. Those can be found
 logged in). Once they're changed, it can take up to 1 minute for Pickaxe to
 switch to the new credentials.
 
-#### Restrictions
+#### Remote Management
+
+This option controls whether Foreman should operate as read-only. Read-only
+drops all commands that would come from the dashboard that could modify the
+miner (change pools, reboot, etc). Pickaxe will only query statistics.
+
+#### Command Rate Limiting
+
+This allows a facility to set facility-side constraints that will limit how
+quickly batch commands can be executed against miners. By setting a rate limit
+on a remote command, those commands will not execute quicker that the rate
+specified. Example: with reboot throttling set to a max of 5 per second, if a
+user dispatches a mass reboot of 1,000 miners, it will take 3 minutes and 20
+seconds for them to complete.
+
+#### IP Restrictions
 
 Restrictions provide a mechanism for limiting the IPs that Pickaxe can reach
 regardless of the constraints in place on the Foreman dashboard. As an example,
