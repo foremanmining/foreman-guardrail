@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /** The single API endpoint. */
 @RestController
@@ -48,11 +46,50 @@ public class ApiController {
                     .filter(s -> !s.startsWith("#"))
                     .forEach(ranges::add);
         }
+
+        final Map<String, Integer> rateLimits = new HashMap<>();
+        if (pickaxeConfig.blinkRate != null) {
+            rateLimits.put(
+                    "blink",
+                    pickaxeConfig.blinkRate);
+        }
+        if (pickaxeConfig.factoryResetRate != null) {
+            rateLimits.put(
+                    "factory-reset",
+                    pickaxeConfig.factoryResetRate);
+        }
+        if (pickaxeConfig.networkRate != null) {
+            rateLimits.put(
+                    "network",
+                    pickaxeConfig.networkRate);
+        }
+        if (pickaxeConfig.passwordRate != null) {
+            rateLimits.put(
+                    "password",
+                    pickaxeConfig.passwordRate);
+        }
+        if (pickaxeConfig.poolChangeRate != null) {
+            rateLimits.put(
+                    "change-pools",
+                    pickaxeConfig.poolChangeRate);
+        }
+        if (pickaxeConfig.powerModeRate != null) {
+            rateLimits.put(
+                    "power-mode",
+                    pickaxeConfig.powerModeRate);
+        }
+        if (pickaxeConfig.rebootRate != null) {
+            rateLimits.put(
+                    "reboot",
+                    pickaxeConfig.rebootRate);
+        }
+
         return new PickaxeConfigDto.PickaxeConfigDtoBuilder()
                 .clientId(pickaxeConfig.clientId)
                 .apiKey(pickaxeConfig.getApiKey())
                 .ranges(ranges)
                 .control(pickaxeConfig.control)
+                .rateLimits(rateLimits)
                 .build();
     }
 
@@ -72,5 +109,8 @@ public class ApiController {
 
         /** The ranges. */
         public List<String> ranges;
+
+        /** The rate limits. */
+        public Map<String, Integer> rateLimits;
     }
 }

@@ -42,8 +42,15 @@
                        class="form-control"/>
             </div>
         </div>
+
         <div class="card mt-4">
-            <h4>Restrictions</h4>
+            <h4>Remote Management</h4>
+            <p>
+                Whether users in Foreman should be able to dispatch remote
+                commands to the miners managed by this Pickaxe. Disabling this
+                will prevent Foreman from rebooting, changing pools, etc. It
+                will operate in a read-only mode.
+            </p>
             <div class="form-group">
                 <label for="control">Remote Management Allowed:</label>
                 <div>
@@ -51,15 +58,97 @@
                            class="form-control fm-check"/>
                 </div>
             </div>
+        </div>
 
-            <div class="alert alert-primary">
+        <div class="card mt-4">
+            <h4>Command Rate Limiting</h4>
+            <p>
+                The following section allows you to set throttling
+                constraints on remote management commands. By setting a rate
+                limit, commands will be spread evenly and processed over time
+                rather than all at once. Typically, this would be used by a
+                facility to prevent a user from performing a large-scale
+                reboot and having them all ran immediately.
+            </p>
+            <div class="alert alert-warning">
+                Note: setting the rate limit to 0 will fully disallow the
+                command. It will be rejected by Pickaxe and the user will be
+                presented with a "Command denied by GUARDrail" message.
+            </div>
+            <h5>Example</h5>
+            <p>
+                With reboot throttling set to 5 per second, if a user
+                dispatches a mass reboot of 1,000 miners, it will take 3
+                minutes and 20 seconds for them to complete.
+            </p>
+            <div class="form-group">
+                <label for="rebootRate">
+                    Reboots <span class="units">max per second</span>
+                </label>
+                <input id="rebootRate" type="number"
+                       th:field="*{rebootRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="poolChangeRate">
+                    Pool Changes <span class="units">max per second</span>
+                </label>
+                <input id="poolChangeRate" type="number"
+                       th:field="*{poolChangeRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="powerModeRate">
+                    Power Mode Changes <span class="units">max per second</span>
+                </label>
+                <input id="powerModeRate" type="number"
+                       th:field="*{powerModeRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="networkRate">
+                    Network Changes <span class="units">max per second</span>
+                </label>
+                <input id="networkRate" type="number"
+                       th:field="*{networkRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="factoryResetRate">
+                    Factory Resets <span class="units">max per second</span>
+                </label>
+                <input id="factoryResetRate" type="number"
+                       th:field="*{factoryResetRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="passwordRate">
+                    Password Changes <span class="units">max per second</span>
+                </label>
+                <input id="passwordRate" type="number"
+                       th:field="*{passwordRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+            <div class="form-group">
+                <label for="blinkRate">
+                    Blink LEDs <span class="units">max per second</span>
+                </label>
+                <input id="blinkRate" type="number"
+                       th:field="*{blinkRate}"
+                       class="form-control" placeholder="unlimited"/>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <h4>IP Restrictions</h4>
+            <p>
                 The following section allows you to
                 specify IP constraints for the Foreman monitoring agent.
                 Whenever an action is performed against a miner, the
                 following IP ranges will be checked. This would typically be
                 used in a hosting environment where only certain miners
                 should be made accessible.
-            </div>
+            </p>
 
             <h5>Example</h5>
             <code>

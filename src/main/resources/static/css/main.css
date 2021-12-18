@@ -70,3 +70,14 @@ body .alert-danger {
     border-color: #fa424a;
     background-color: #feecec;
 }
+
+body h5 {
+    color: gray;
+    padding-bottom: 10px;
+}
+
+body .units {
+    color: gray;
+    font-size: .7rem;
+    text-transform: uppercase;
+}
