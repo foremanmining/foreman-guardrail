@@ -47,6 +47,15 @@ public class ApiController {
                     .forEach(ranges::add);
         }
 
+        final List<String> macs = new LinkedList<>();
+        if (pickaxeConfig.macs != null && !pickaxeConfig.macs.isEmpty()) {
+            Arrays.stream(pickaxeConfig.macs.split("\\r?\\n|\\r"))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .filter(s -> !s.startsWith("#"))
+                    .forEach(macs::add);
+        }
+
         final Map<String, Integer> rateLimits = new HashMap<>();
         if (pickaxeConfig.blinkRate != null) {
             rateLimits.put(
@@ -88,6 +97,7 @@ public class ApiController {
                 .clientId(pickaxeConfig.clientId)
                 .apiKey(pickaxeConfig.getApiKey())
                 .ranges(ranges)
+                .macs(macs)
                 .control(pickaxeConfig.control)
                 .rateLimits(rateLimits)
                 .build();
@@ -106,6 +116,9 @@ public class ApiController {
 
         /** The control. */
         public Boolean control;
+
+        /** The allowed MAC addresses. */
+        public List<String> macs;
 
         /** The ranges. */
         public List<String> ranges;

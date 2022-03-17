@@ -71,9 +71,24 @@ specified. Example: with reboot throttling set to a max of 5 per second, if a
 user dispatches a mass reboot of 1,000 miners, it will take 3 minutes and 20
 seconds for them to complete.
 
+#### MAC Restrictions
+
+MAC Restrictions provide a mechanism for limiting the MAC addresses that 
+Pickaxe can publish to the Foreman API. As an example, if a miner network 
+was DHCP and the IPs shuffled, GUARDrail will block a different miner's data 
+from leaving the facility if the MAC address is different.
+
+MACs are provided one per line. Example:
+
+```
+02:1f:85:92:80:5a
+02:ad:db:b9:cd:67
+3c:a3:08:57:70:74
+```
+
 #### IP Restrictions
 
-Restrictions provide a mechanism for limiting the IPs that Pickaxe can reach
+IP Restrictions provide a mechanism for limiting the IPs that Pickaxe can reach
 regardless of the constraints in place on the Foreman dashboard. As an example,
 if a user were to dispatch a `reboot` to the IP `10.10.1.5`, but that IP wasn't
 in the **Allowed Ranges**, then the command would fail.

@@ -24,6 +24,9 @@ public class PickaxeConfig {
     /** The IP ranges. */
     public String ipRanges = "0-255.0-255.0-255.0-255";
 
+    /** The allowed MACs. */
+    public String macs = "*";
+
     /** The network throttle rate. */
     public Integer networkRate;
 
