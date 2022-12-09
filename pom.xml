@@ -11,10 +11,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-	<groupId>mn.foreman</groupId>
-	<artifactId>guardrail</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
-	<name>guardrail</name>
+    <groupId>mn.foreman</groupId>
+    <artifactId>guardrail</artifactId>
+    <version>1.4.0-SNAPSHOT</version>
+    <name>guardrail</name>
     <description>The Foreman guardrail application</description>
 
     <distributionManagement>
@@ -31,7 +31,7 @@
     </distributionManagement>
 
     <properties>
-        <foreman-java-api.version>1.9.0</foreman-java-api.version>
+        <foreman-java-api.version>1.50.0</foreman-java-api.version>
 
         <java.version>1.8</java.version>
     </properties>
