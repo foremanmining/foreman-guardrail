@@ -2,7 +2,7 @@
 
 ## Status
 
-[![Build Status](https://travis-ci.com/foremanmining/foreman-guardrail.svg?branch=main)](https://travis-ci.com/foremanmining/foreman-guardrail)
+![Build Status](https://github.com/foremanmining/foreman-guardrail/actions/workflows/workflow.yml/badge.svg)
 
 ## GUARDrail
 
@@ -73,10 +73,10 @@ seconds for them to complete.
 
 #### MAC Restrictions
 
-MAC Restrictions provide a mechanism for limiting the MAC addresses that 
-Pickaxe can publish to the Foreman API. As an example, if a miner network 
-was DHCP and the IPs shuffled, GUARDrail will block a different miner's data 
-from leaving the facility if the MAC address is different.
+MAC Restrictions provide a mechanism for limiting the MAC addresses that Pickaxe
+can publish to the Foreman API. As an example, if a miner network was DHCP and
+the IPs shuffled, GUARDrail will block a different miner's data from leaving the
+facility if the MAC address is different.
 
 MACs are provided one per line. Example:
 
