@@ -13,7 +13,7 @@
 
     <groupId>mn.foreman</groupId>
     <artifactId>guardrail</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <name>guardrail</name>
     <description>The Foreman guardrail application</description>
 
@@ -33,7 +33,7 @@
     </distributionManagement>
 
     <properties>
-        <foreman-java-api.version>1.50.0</foreman-java-api.version>
+        <foreman-java-api.version>1.61.2</foreman-java-api.version>
 
         <java.version>1.8</java.version>
 
