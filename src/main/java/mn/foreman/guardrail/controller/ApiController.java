@@ -56,6 +56,15 @@ public class ApiController {
                     .forEach(macs::add);
         }
 
+        final List<String> workers = new LinkedList<>();
+        if (pickaxeConfig.workers != null && !pickaxeConfig.workers.isEmpty()) {
+            Arrays.stream(pickaxeConfig.workers.split("\\r?\\n|\\r"))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .filter(s -> !s.startsWith("#"))
+                    .forEach(workers::add);
+        }
+
         final Map<String, Integer> rateLimits = new HashMap<>();
         if (pickaxeConfig.blinkRate != null) {
             rateLimits.put(
@@ -98,6 +107,7 @@ public class ApiController {
                 .apiKey(pickaxeConfig.getApiKey())
                 .ranges(ranges)
                 .macs(macs)
+                .workers(workers)
                 .control(pickaxeConfig.control)
                 .rateLimits(rateLimits)
                 .build();
@@ -122,6 +132,9 @@ public class ApiController {
 
         /** The ranges. */
         public List<String> ranges;
+
+        /** The workers. */
+        public List<String> workers;
 
         /** The rate limits. */
         public Map<String, Integer> rateLimits;

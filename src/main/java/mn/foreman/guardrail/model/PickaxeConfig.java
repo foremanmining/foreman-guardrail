@@ -27,6 +27,9 @@ public class PickaxeConfig {
     /** The allowed MACs. */
     public String macs = "*";
 
+    /** The allowed workers. */
+    public String workers = "";
+
     /** The network throttle rate. */
     public Integer networkRate;
 
