@@ -193,6 +193,32 @@
                 ></textarea>
             </div>
         </div>
+
+        <div class="card mt-4">
+            <h4>Worker Restrictions</h4>
+            <p>
+                The following section allows you to
+                specify worker constraints for the Foreman monitoring agent.
+                This will limit which miners are allowed to be reported up to
+                the Foreman dashboard, and provides a more consistent
+                approach to limit the scope of the Foreman agent in a DHCP
+                network.
+            </p>
+
+            <h5>Example</h5>
+            <code>
+                mymininggroup<br/>
+                workername<br/>
+                anotherworker
+            </code>
+
+            <div class="form-group mt-2">
+                <label for="workers">Allowed workers:</label>
+                <textarea id="workers" rows="10" th:field="*{workers}"
+                          class="form-control"
+                ></textarea>
+            </div>
+        </div>
         <input type="submit" class="btn btn-fm-b mt-5 save" value="Save">
     </form>
 </div>
